@@ -1,0 +1,179 @@
+/* =====================================================================
+   CURONEX — UNIQUE AUTHENTICATION (PIN & QR) PAGE
+   Built on top of the shared style.css tokens/vars — do not redefine
+   navbar, sidebar, .card, .details-grid, form input styles, etc.
+   ===================================================================== */
+
+/* ---------- Booking summary chips (top of left card) ---------- */
+.summary-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:4px;
+}
+.summary-chip{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  background:var(--selected-bg);
+  border-radius:var(--radius-input);
+  padding:10px 14px;
+  min-width:120px;
+  flex:1 1 140px;
+}
+.summary-chip .chip-label{font-size:11px; font-weight:500; color:var(--secondary-text); text-transform:uppercase; letter-spacing:.03em;}
+.summary-chip .chip-value{font-size:14px; font-weight:600; color:var(--primary-brand);}
+
+.required-hint.block{display:block; margin:0 0 14px;}
+
+/* ---------- Field icons inside labels (Patient Details review form) ---------- */
+.form-group label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--heading-text);
+  margin-bottom:6px;
+}
+.field-icon{
+  width:15px; height:15px;
+  flex-shrink:0;
+  color:var(--icon-primary-text);
+  opacity:0.8;
+}
+
+/* ---------- Right card: Secure Verification ---------- */
+.auth-card{display:flex; flex-direction:column;}
+.auth-desc{
+  font-size:14px;
+  color:var(--secondary-text);
+  margin:0 0 20px;
+  line-height:1.5;
+}
+
+.auth-placeholder{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center;
+  color:var(--secondary-text);
+  background:var(--page-bg);
+  border:1.5px dashed var(--border);
+  border-radius:var(--radius-card);
+  padding:48px 24px;
+  margin-bottom:20px;
+}
+.auth-placeholder svg{color:var(--input-border);}
+.auth-placeholder p{margin:0; font-size:14px; max-width:240px;}
+
+.auth-result{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:center;
+  background:var(--page-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  padding:24px;
+  margin-bottom:20px;
+}
+.pin-block{display:flex; flex-direction:column; gap:8px;}
+.pin-label{font-size:12px; font-weight:600; color:var(--secondary-text); text-transform:uppercase; letter-spacing:.04em;}
+.pin-digits{
+  display:flex;
+  gap:8px;
+}
+.pin-digits span{
+  width:38px; height:46px;
+  display:flex; align-items:center; justify-content:center;
+  background:#fff;
+  border:1.5px solid var(--primary-button);
+  border-radius:10px;
+  font-size:22px;
+  font-weight:700;
+  color:var(--primary-brand);
+}
+.ref-id{font-size:12px; color:var(--secondary-text); margin-top:2px;}
+
+.qr-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.qr-block #qrcode{
+  padding:10px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  line-height:0;
+}
+.qr-caption{font-size:11px; color:var(--secondary-text); text-align:center; max-width:130px;}
+
+.auth-actions{display:flex; gap:12px; margin-top:auto;}
+.auth-actions .btn{flex:1;}
+.auth-note{font-size:12px; color:var(--secondary-text); margin:12px 0 0; min-height:16px;}
+.auth-note.success{color:var(--success);}
+.auth-note.error{color:var(--error);}
+
+@media (max-width:520px){
+  .auth-result{grid-template-columns:1fr; justify-items:center; text-align:center;}
+  .pin-block{align-items:center;}
+}
+
+/* =====================================================================
+   PRINT CARD — off-screen node captured by html2canvas for the
+   downloadable PNG/PDF. Positioned outside the viewport but kept
+   rendered (not display:none) so it can be captured.
+   ===================================================================== */
+.print-card{
+  position:absolute;
+  top:0;
+  left:-9999px;
+  width:420px;
+  background:#fff;
+  border-radius:24px;
+  padding:28px;
+  font-family:'Poppins', sans-serif;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+.print-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:16px;
+  margin-bottom:20px;
+  border-bottom:2px solid var(--primary-brand);
+}
+.print-logo-slot{
+  width:44px; height:44px;
+  background:var(--primary-brand);
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.print-logo-slot img{width:100%; height:100%; object-fit:contain;}
+.print-header div:last-child{display:flex; flex-direction:column;}
+.print-brand{font-size:20px; font-weight:700; color:var(--primary-brand);}
+.print-tag{font-size:12px; color:var(--secondary-text);}
+
+.print-body{display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center;}
+.print-info{width:100%;}
+.print-info p{margin:0 0 4px; font-size:13px; color:var(--body-text);}
+.print-patient{font-size:17px !important; font-weight:600; color:var(--heading-text);}
+.print-ref{font-size:12px !important; color:var(--secondary-text) !important;}
+
+.print-pin{display:flex; flex-direction:column; align-items:center; gap:8px;}
+.print-pin .pin-digits{gap:8px;}
+.print-qr{padding:12px; background:#fff; border:1px solid var(--border); border-radius:14px; line-height:0;}
+
+.print-footer{
+  margin:18px 0 0;
+  font-size:11px;
+  color:var(--secondary-text);
+  line-height:1.5;
+}
