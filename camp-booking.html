@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curonex | Camp Booking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="camp-booking.css">
+</head>
+<body>
+<main class="main-content">
+<section class="page-header">
+<div class="back-btn"><i class="fa-solid fa-arrow-left"></i></div>
+<div class="header-text">
+<h1>Camp Booking</h1>
+<p>Find and reserve healthcare camps near you.</p>
+</div>
+</section>
+
+<section class="search-card">
+<div class="search-row">
+<div class="search-box">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input type="text" placeholder="Search by Camp Name, Camp ID, Hospital, City or Specialization">
+</div>
+<input id="radius" class="sort-dropdown" type="number" placeholder="Radius (KM)">
+<button class="filter-btn" onclick="validateRadius(document.getElementById('radius').value)">Validate Radius</button>
+<select class="sort-dropdown">
+<option>Nearest Date</option><option>Latest Camps</option><option>Available Slots</option>
+</select>
+<button class="refresh-btn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+</div>
+</section>
+
+<section class="quick-filters">
+<button class="chip active">All Camps</button>
+<button class="chip">Today's Camps</button>
+<button class="chip">This Week</button>
+<button class="chip">Cardiology</button>
+<button class="chip">Eye Care</button>
+<button class="chip">Dental</button>
+<button class="chip">Orthopedic</button>
+</section>
+
+<section class="camp-summary">
+<div class="summary-box"><h3>42</h3><span>Available Camps</span></div>
+<div class="summary-box"><h3>216</h3><span>Open Slots</span></div>
+<div class="summary-box"><h3>12</h3><span>Cities</span></div>
+<div class="summary-box"><h3>Today</h3><span>Updated 2 mins ago</span></div>
+</section>
+
+<section class="table-card">
+<div class="table-header">
+<div><h2>Available Camps</h2><p>Select a camp to book.</p></div>
+</div>
+<table>
+<thead><tr><th>ID</th><th>Camp</th><th>Hospital</th><th>City</th><th>Specialization</th><th>Date</th><th>Slots</th><th>Status</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>CMP-2041</td><td>Cardiac Wellness Camp</td><td>Apollo Hospital</td><td>Madurai</td><td>Cardiology</td><td>12 Jul 2026</td><td>24</td><td><span class="status open">Open</span></td><td><button class="book-btn" onclick="confirmBooking()">Book</button></td></tr>
+<tr><td>CMP-2038</td><td>Vision Screening</td><td>City Care</td><td>Chennai</td><td>Eye Care</td><td>14 Jul 2026</td><td>18</td><td><span class="status filling">Filling Fast</span></td><td><button class="book-btn" onclick="confirmBooking()">Book</button></td></tr>
+<tr><td>CMP-2035</td><td>Dental Check-up</td><td>Smile Dental</td><td>Coimbatore</td><td>Dental</td><td>15 Jul 2026</td><td>10</td><td><span class="status full">Full</span></td><td><button class="book-btn" onclick="confirmBooking()">Book</button></td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="camp-preview">
+<div class="preview-header"><h2>Selected Camp Details</h2><button class="view-btn">View Details</button></div>
+<div class="preview-content">
+<div class="preview-left">
+<h3>Cardiac Wellness Camp</h3>
+<p>Comprehensive cardiac screening and consultation.</p>
+<div class="info-grid">
+<div><strong>Hospital</strong><span>Apollo Hospital</span></div>
+<div><strong>Location</strong><span>Madurai</span></div>
+<div><strong>Date</strong><span>12 Jul 2026</span></div>
+<div><strong>Time</strong><span>09:00 AM - 04:00 PM</span></div>
+</div>
+</div>
+<div class="preview-right">
+<h4>Services</h4>
+<ul><li>ECG</li><li>BP Check</li><li>Blood Sugar</li><li>Consultation</li></ul>
+<button class="primary-btn" onclick="confirmBooking()">Reserve Slot</button>
+</div>
+</div>
+</section>
+
+<section class="pagination">
+<button>&laquo;</button><button class="active">1</button><button>2</button><button>3</button><button>&raquo;</button>
+</section>
+</main>
+<script src="camp-booking.js"></script>
+</body>
+</html>
