@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Medical Record | Curonex</title>
+
+    <link rel="stylesheet" href="patient_record.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+            NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+
+                <h2>Curonex</h2>
+
+                <p>Affordable Healthcare Access</p>
+
+            </div>
+
+        </div>
+
+        <div class="nav-right">
+
+            <a href="#">About</a>
+
+            <a href="#">Contact</a>
+
+            <div class="notification">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <span>2</span>
+
+            </div>
+
+            <div class="profile" id="profileTrigger">
+
+                <div class="avatar">D</div>
+
+                <span>Doctor</span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+                <div class="profile-dropdown" id="profileDropdown">
+
+                    <button type="button" class="dropdown-item">My Profile</button>
+
+                    <button type="button" class="dropdown-item">Settings</button>
+
+                    <button type="button" class="dropdown-item logout" id="logoutBtn">Logout</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================
+            PAGE
+    ========================== -->
+
+    <div class="page">
+
+        <!-- LEFT CONTENT -->
+
+        <div class="main-content" id="mainContent">
+
+            <!-- Heading -->
+
+            <div class="page-title">
+
+                <a href="#">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </a>
+
+                <div>
+
+                    <h1>Patient Medical Record</h1>
+
+                    <p>
+
+                        Fill the patient's consultation details and submit the medical record.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <form id="recordForm" novalidate>
+
+                <!-- Patient Information -->
+
+                <div class="card">
+
+                    <h2>
+
+                        Patient Information
+
+                    </h2>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Patient ID <span class="req-star">*</span></label>
+
+                            <input type="text" id="patientId" placeholder="Enter Patient ID" required>
+                            <span class="error-text">Patient ID is required.</span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Patient Name <span class="req-star">*</span></label>
+
+                            <input type="text" id="patientName" placeholder="Enter Patient Name" required>
+                            <span class="error-text">Patient name is required.</span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Phone Number <span class="req-star">*</span></label>
+
+                            <input type="tel" id="phoneNumber" placeholder="Enter Mobile Number" required>
+                            <span class="error-text">Phone number is required.</span>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Age</label>
+
+                            <input type="number" id="age" placeholder="Age">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Gender</label>
+
+                            <select id="gender">
+
+                                <option value="" selected disabled>Select Gender</option>
+
+                                <option>Male</option>
+
+                                <option>Female</option>
+
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Medical Information -->
+
+                <div class="card">
+
+                    <h2>
+
+                        Medical Information
+
+                    </h2>
+
+                    <div class="form-group">
+
+                        <label>Chief Complaint <span class="req-star">*</span></label>
+
+                        <input type="text" id="chiefComplaint" placeholder="Patient Complaint" required>
+                        <span class="error-text">Chief complaint is required.</span>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Description</label>
+
+                        <textarea rows="4" id="description" placeholder="Describe the patient's symptoms"></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Diagnosis <span class="req-star">*</span></label>
+
+                        <textarea rows="4" id="diagnosis" placeholder="Doctor's diagnosis" required></textarea>
+                        <span class="error-text">Diagnosis is required.</span>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Prescription <span class="req-star">*</span></label>
+
+                        <textarea rows="4" id="prescription" placeholder="Prescribed medicines" required></textarea>
+                        <span class="error-text">Prescription is required.</span>
+
+                    </div>
+
+                </div>
+
+                <!-- Upload -->
+
+                <div class="card">
+
+                    <div class="card-header-row">
+                        <h2>Medical Reports</h2>
+                        <span class="reports-count-badge" id="reportsCountBadge">0 added</span>
+                    </div>
+
+                    <p class="upload-hint">
+                        Add each medical report separately. You can attach as many reports as needed, or remove one you added by mistake.
+                    </p>
+
+                    <div class="terms-box" id="termsBox">
+
+                        <label>
+
+                            <input type="checkbox" id="termsCheckbox">
+
+                            <span>I agree to the <a href="#" id="termsLink">Terms &amp; Conditions</a> for uploading medical reports. <span class="req-star">*</span></span>
+
+                        </label>
+
+                        <p class="error-text terms-error" id="termsError">Please accept the terms &amp; conditions before adding reports.</p>
+
+                    </div>
+
+                    <div id="reportsList" class="reports-list"></div>
+
+                    <p class="no-reports-msg" id="noReportsMsg">No reports added yet. Click "Add Report" to upload one.</p>
+
+                    <button type="button" class="add-report-btn" id="addReportBtn" disabled>
+
+                        <i class="fa-solid fa-plus"></i> Add Report
+
+                    </button>
+
+                </div>
+
+                <!-- Consent -->
+
+                <div class="card consent">
+
+                    <label>
+
+                        <input type="checkbox" id="consentCheckbox">
+
+                        I confirm that the patient has provided consent to upload medical reports. <span class="req-star">*</span>
+
+                    </label>
+                    <span class="error-text" id="consentError">Please confirm patient consent before submitting.</span>
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="button-group">
+
+                    <button type="button" class="draft-btn" id="draftBtn">
+
+                        Save Draft
+
+                    </button>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+
+                        Submit Record
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- Success State (shown after submit) -->
+
+            <div class="card success-card" id="successCard" hidden>
+
+                <div class="success-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <h2>Thank You!</h2>
+
+                <p>Patient record has been successfully stored in the database.</p>
+
+                <button type="button" class="submit-btn" id="newRecordBtn">
+                    Add Another Record
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <aside class="right-panel">
+
+            <div class="card">
+
+                <h3>
+
+                    Patient Summary
+
+                </h3>
+
+                <div class="info-row">
+
+                    <span>Today's Patients</span>
+
+                    <strong>18</strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Completed</span>
+
+                    <strong>12</strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>Pending</span>
+
+                    <strong>6</strong>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Guidelines
+
+                </h3>
+
+                <ol>
+
+                    <li>Verify Patient ID.</li>
+
+                    <li>Record medical observations.</li>
+
+                    <li>Upload reports only with consent.</li>
+
+                    <li>Review before submission.</li>
+
+                </ol>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+
+                    Support
+
+                </h3>
+
+                <p>
+
+                    Curonex Medical Helpdesk
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    support@curonex.com
+
+                </p>
+
+                <p>
+
+                    1800-200-100
+
+                </p>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="patient_record.js"></script>
+
+</body>
+
+</html>
