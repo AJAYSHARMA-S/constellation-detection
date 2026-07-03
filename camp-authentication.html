@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curonex | Unique Authentication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="camp-authentication.css">
+</head>
+<body>
+
+<!-- ============ TOP NAVBAR (static — matches existing pages) ============ -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-slot">
+      <img src="logo.jpg" alt="Curonex logo">
+    </div>
+    <div class="brand-text-group">
+      <span class="brand-title">Curonex</span>
+      <span class="brand-tagline">Affordable Healthcare Access</span>
+    </div>
+  </div>
+
+  <div class="navbar-right">
+    <nav class="nav-links">
+      <a class="nav-link" href="#">About</a>
+      <a class="nav-link" href="#">Contact</a>
+    </nav>
+
+    <button class="icon-btn-round" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 2.5C6.5 2.5 4.5 4.5 4.5 7V10L3 13H15L13.5 10V7C13.5 4.5 11.5 2.5 9 2.5Z" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M7.3 15C7.6 15.7 8.25 16.2 9 16.2C9.75 16.2 10.4 15.7 10.7 15" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="badge">2</span>
+    </button>
+
+    <div class="user-menu">
+      <button class="user-trigger" id="userTrigger" aria-haspopup="true" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="6" r="3" stroke="#FFFFFF" stroke-width="1.4"/>
+          <path d="M3.5 15C4.3 12.3 6.4 11 9 11C11.6 11 13.7 12.3 14.5 15" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        AJAY SHARMA S
+        <svg class="chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="user-dropdown" id="userDropdown">
+        <button class="dropdown-item">My Profile</button>
+        <button class="dropdown-item">Settings</button>
+        <button class="dropdown-item logout" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="app-shell">
+
+  <!-- ============ LEFT SIDEBAR (static — matches existing pages) ============ -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" href="#">
+        <img class="sidebar-icon" src="appoinment scheduling.png" alt="Appointment Scheduling">
+        Appointment Scheduling
+      </a>
+      <a class="sidebar-link" href="#">
+        <img class="sidebar-icon" src="pharmacy.png" alt="Pharmacy">
+        Pharmacy
+      </a>
+      <a class="sidebar-link" href="#">
+        <img class="sidebar-icon" src="emergency service.png" alt="Emergency Service">
+        Emergency Service
+      </a>
+      <a class="sidebar-link" href="#">
+        <img class="sidebar-icon" src="critical resource service.png" alt="Critical Resource Service">
+        Critical Resource Service
+      </a>
+      <a class="sidebar-link active" href="#">
+        <img class="sidebar-icon" src="medical camp.png" alt="Medical Camp">
+        Medical Camp
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN CONTENT — Authentication Page (new) ============ -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <button class="back-btn" aria-label="Go back" onclick="history.back()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="#0B3D91" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div>
+        <p class="breadcrumb">Camp Booking &nbsp;/&nbsp; Personal Details &nbsp;/&nbsp; <span>Unique Authentication</span></p>
+        <h1 class="page-title">Unique Authentication</h1>
+        <p class="page-subtitle">Review your details, verify them, and generate your access PIN &amp; QR code for the camp.</p>
+      </div>
+    </div>
+
+    <div class="auth-grid">
+
+      <!-- LEFT: Review Patient Data -->
+      <section class="card review-card">
+        <div class="card-header">
+          <h2>Review Patient Data</h2>
+          <span class="badge badge-info" id="fieldsStatusBadge">4 fields</span>
+        </div>
+        <p class="card-desc">Confirm the information below is correct before generating your authentication PIN.</p>
+
+        <div class="field-group" data-required="true">
+          <div class="field-box">
+            <input type="text" id="fullName" placeholder="Enter full name" value="ajay sharma">
+          </div>
+          <p class="field-error-text">This field is required.</p>
+        </div>
+
+        <div class="field-group" data-required="true">
+          <div class="field-box">
+            <input type="tel" id="phoneNumber" placeholder="Enter phone number" value="+91 98765 43210">
+          </div>
+          <p class="field-error-text">This field is required.</p>
+        </div>
+
+        <div class="field-group" data-required="true">
+          <div class="field-box">
+            <input type="text" id="address" placeholder="Enter address" value="14, Lake View Street, Banjara Hills, Hyderabad">
+          </div>
+          <p class="field-error-text">This field is required.</p>
+        </div>
+
+        <div class="field-group" data-required="true">
+          <div class="field-box">
+            <input type="text" id="reason" placeholder="Enter reason for taking camp" value="Just a general checkup">
+          </div>
+          <p class="field-error-text">This field is required.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="camp-summary">
+          <p class="camp-summary-title">Camp &amp; Hospital Details</p>
+          <div class="camp-summary-grid">
+            <div class="summary-item">
+              <div><p class="summary-label">Camp ID</p><p class="summary-value">CMP-2044</p></div>
+            </div>
+            <div class="summary-item">
+              <div><p class="summary-label">Doctor Name</p><p class="summary-value">Dr. Anitha Rao</p></div>
+            </div>
+            <div class="summary-item">
+              <div><p class="summary-label">Specialization</p><p class="summary-value">General Medicine</p></div>
+            </div>
+            <div class="summary-item">
+              <div><p class="summary-label">Hospital</p><p class="summary-value">City Care Hospital</p></div>
+            </div>
+            <div class="summary-item">
+              <div><p class="summary-label">City</p><p class="summary-value">Banjara Hills, Hyderabad</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Generate Authentication -->
+      <section class="card generate-card">
+        <div class="card-header">
+          <h2>Generate Authentication</h2>
+        </div>
+        <p class="card-desc">Verify your details to generate a unique PIN and QR code for camp entry.</p>
+
+        <label class="verify-row" for="verifyCheck">
+          <input type="checkbox" id="verifyCheck">
+          <span class="checkbox-box"></span>
+          <span class="verify-text">I verify that the above information is correct</span>
+        </label>
+        <p class="verify-warning" id="verifyWarning">Please fill all mandatory fields and confirm verification to continue.</p>
+
+        <button class="btn-primary" id="generateBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1.2" stroke="#FFFFFF" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.2" stroke="#FFFFFF" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.2" stroke="#FFFFFF" stroke-width="1.6"/><path d="M14 14h3v3h-3zM18 14h3M14 18h3M18 18h3v3h-3z" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          Generate PIN &amp; QR
+        </button>
+
+        <div class="pass-card" id="passCard">
+          <div class="pass-card-inner" id="passCardInner">
+            <div class="pass-brand">
+              <div class="pass-logo">
+                <img src="" alt="" class="pass-logo-img">
+              </div>
+              <span>Curonex Camp Pass</span>
+            </div>
+
+            <div class="pass-body">
+              <div class="pin-block">
+                <p class="pin-label">Your Access PIN</p>
+                <p class="pin-value" id="pinValue">— — — — — —</p>
+                <p class="pass-name" id="passName">Kaushik T</p>
+                <p class="pass-camp" id="passCamp">City Care Hospital &middot; CMP-2044</p>
+                <span class="badge badge-success">Verified</span>
+              </div>
+              <div class="qr-block">
+                <div id="qrCanvas" class="qr-canvas"></div>
+                <p class="qr-hint">Scan at camp entry</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pass-actions" id="passActions">
+          <button class="btn-secondary" id="regenerateBtn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4v5h5M20 20v-5h-5" stroke="#1976D2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.6 15A8 8 0 1019 9" stroke="#1976D2" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Regenerate
+          </button>
+          <button class="btn-primary" id="downloadBtn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13M7 11l5 5 5-5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20h16" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Download PIN &amp; QR
+          </button>
+        </div>
+
+        <!-- Always-visible saveable image: guarantees the pass can be saved
+             (long-press → Save Image) even on browsers/in-app webviews that
+             block programmatic file downloads, e.g. iOS Safari or WhatsApp. -->
+        <div class="save-image-wrap" id="saveImageWrap" hidden>
+          <img id="passPreviewImg" class="pass-preview-img" alt="Your Curonex Camp Pass — PIN and QR code" />
+          <p class="save-hint">Can't download? Press and hold the image above, then choose “Save Image”.</p>
+        </div>
+
+        <p class="toast" id="toastMsg"></p>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="camp-authentication.js"></script>
+</body>
+</html>
